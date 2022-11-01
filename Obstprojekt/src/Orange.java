@@ -6,7 +6,9 @@ public class Orange extends Obst {
         super(name, vitaminC_Gehalt, gewicht, reif);
         this.kernlos = kernlos;
     }
-    public boolean iskernlos(){return this.kernlos;}
+    public boolean iskernlos(){
+        return this.kernlos;
+    }
 
     public String toString(){
         String text;
