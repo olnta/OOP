@@ -1,4 +1,4 @@
-public class Programm {
+public class ProgrammObst {
 
     /**
      * Main-Methode enthält alles, was beim Aufrufen der Klasse automatisch ausgeführt wird.
