@@ -1,4 +1,4 @@
-public class Spieler {
+public class Spieler extends Person {
 
     private String name;
     private int alter;
@@ -8,8 +8,7 @@ public class Spieler {
     private int tore;
 
     public Spieler (String name, int alter, int staerke, int torschuss, int motivation, int tore){
-        this.name =name;
-        this.alter = alter;
+        super(name , alter);
         this.staerke = staerke;
         this.torschuss = torschuss;
         this.motivation = motivation;

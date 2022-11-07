@@ -1,4 +1,6 @@
-public class ProgrammTrainer {
+import java.util.ArrayList;
+
+public class ProgrammFootball {
 
     public static void main(String[] args) {
 
@@ -37,6 +39,22 @@ public class ProgrammTrainer {
         System.out.println("Torschuss:" + spieler1.getTorschuss());
         System.out.println("Motivation:" + spieler1.getMotivation());
         System.out.println("Tore:" + spieler1.getTore());
+
+        Torwart torwart = new Torwart("Bob", 27, 6,8, 10);
+
+        Spieler spieler2 = new Spieler("Peter", 20, 8, 9, 7, 25 );
+        Spieler spieler3 = new Spieler ("John", 24,7, 7,8,17);
+        Spieler spieler4 = new Spieler("Tom", 18, 9, 9, 10, 30 );
+        Spieler spieler5 = new Spieler("Max", 25, 8,10,10,30);
+
+
+
+        ArrayList spielerlisteBarcelona = new ArrayList();
+        spielerlisteBarcelona.add(spieler1);
+        spielerlisteBarcelona.add(spieler2);
+        spielerlisteBarcelona.add(spieler3);
+        spielerlisteBarcelona.add(spieler4);
+        spielerlisteBarcelona.add(spieler5);
 
 
     }
