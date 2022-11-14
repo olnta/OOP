@@ -36,27 +36,27 @@ public class Mannschaft {
         return this.spielerliste;
     }
 
-    public void getStaerke(){
+    public int getStaerke(){
         int gesamtStaerke = 0;
         for (int i = 0; i < spielerliste.size(); i++){
             gesamtStaerke += spielerliste.get(i).getStaerke();
         }
         gesamtStaerke = gesamtStaerke / spielerliste.size();
-
+        return gesamtStaerke;
 
 
     }
 
-    public void getMotivation(){
+    public int getMotivation(){
         int teamMotivation = 0;
         int summeMotivation = 0;
-
-        /**for (Spieler s = spielerliste)
-         */
-        for (int i = 0; i < spielerliste.size(); i++){
-            summeMotivation += spielerliste.get(i).getMotivation();
+        for ( Spieler spieler : spielerliste){
+            summeMotivation += spieler.getMotivation();
         }
-        summeMotivation = summeMotivation / spielerliste.size();
+
+        summeMotivation += torwart.getMotivation();
+        teamMotivation = summeMotivation / (spielerliste.size() + 1);
+        return teamMotivation;
     }
 
 
@@ -82,10 +82,16 @@ public class Mannschaft {
 
     public String toString(){
         String text;
-        text = "Name:" + getName();
-        text += "\nTrainer: " + getTrainer();
-        text += "\nTorwart: " + getTorwart();
-        text += "\nListe der Spieler: " + getSpielerliste();
+        text= "Name:"                  + getName();
+        text += "\n=========================";
+        text += "\n\nTrainer:\n"           + getTrainer();
+        text += "\n\nTorwart:\n"           + getTorwart();
+        text += "\n\nListe der Spieler:";
+        for (Spieler s: getSpielerliste()){
+            text += "\n" + s;
+        }
+        text +="\n\nStärke" + getStaerke();
+        text += "\n\nMotivation" + getMotivation();
         return text;
     }
 

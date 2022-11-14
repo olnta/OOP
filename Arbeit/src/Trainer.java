@@ -36,9 +36,10 @@ public class Trainer extends Person {
 
     public String toString(){
         String text;
-        text = "Name:                  " + getName();
-        text+= "\nAlter:                 " + getAlter();
-        text+= "\nErfahrung:             " + getErfahrung();
+        text = "Name:          " + super.getName();
+        text+= "\nAlter:         " + super.getAlter();
+        text+= "\nErfahrung:     " + getErfahrung();
+        text += "\n-----------------------------------";
         return text;
     }
 

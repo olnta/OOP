@@ -67,12 +67,13 @@ public class Spieler extends Person {
 
     public String toString(){
         String text;
-        text = "Name : " + getName();
-        text += "\nAlter :" + getAlter();
-        text += "\nStärke : " + getStaerke();
-        text += "\nTorschuss : " + getTorschuss();
-        text += "\nMotivation : " + getMotivation();
-        text += "\nTore : " + getTore();
+        text = "Name:          " + super.getName();
+        text += "\nAlter:         " + super.getAlter();
+        text += "\nStärke:        " + getStaerke();
+        text += "\nTorschuss:     " + getTorschuss();
+        text += "\nMotivation:    " + getMotivation();
+        text += "\nTore:          " + getTore();
+        text += "\n-----------------------------------";
         return text;
     }
 

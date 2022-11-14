@@ -23,17 +23,18 @@ public class Ergebnis {
 
     //Setter
     public void setToreHeim(int toreHeim){
-        this.toreHeim = toreHeim;
+        toreHeim++;
     }
 
     public void setToreGast(int toreGast) {
-        this.toreGast = toreGast;
+        toreGast++;
     }
 
     public String toString(){
         String text;
         text = "\nGast Tore:" + getToreGast();
         text += "\nHeim Tore " + getToreHeim();
+        text += "\n-----------------------------------";
         return text;
     }
 
