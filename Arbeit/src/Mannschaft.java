@@ -82,7 +82,7 @@ public class Mannschaft {
 
     public String toString(){
         String text;
-        text= "Name:"                  + getName();
+        text= "Name:     "         + getName();
         text += "\n=========================";
         text += "\n\nTrainer:\n"           + getTrainer();
         text += "\n\nTorwart:\n"           + getTorwart();
@@ -90,8 +90,9 @@ public class Mannschaft {
         for (Spieler s: getSpielerliste()){
             text += "\n" + s;
         }
-        text +="\n\nStärke" + getStaerke();
-        text += "\n\nMotivation" + getMotivation();
+        text +="\n\nStärke         " + getStaerke();
+        text += "\nMotivation     " + getMotivation();
+        text += "\n";
         return text;
     }
 
