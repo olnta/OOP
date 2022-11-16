@@ -1,47 +1,43 @@
 public class ProgrammObst {
 
     /**
-     * Main-Methode enthält alles, was beim Aufrufen der Klasse automatisch ausgeführt wird.
+     * Methode, die beim Laden der Klasse Programm automatisch ausgeführt wird.
      * @param args
      */
-
     public static void main(String[] args) {
-        Banane banane; // Deklaration von Banane als etwas vom Datentyp Banane
-
-        /**
-         * Instanziierung (!!!) (Initialisierung) einer banane d. h. erstellen
-         * eines neuen Objektes von Typ Banane.
-         */
-
-        banane = new Banane("Kochbanane", 8.7,120.3, true, 11.3 );
-
-        System.out.println("Name Des Obstes:" + banane.getName());
-        System.out.println("Gewicht:"  + banane.getGewicht());
-        System.out.println("VitaminC:" + banane.getVitaminC_Gehalt());
-        System.out.println("Reif:" + banane.isReif());
-        System.out.println("Krümmung:" + banane.getKruemmung());
-        System.out.println("1 Monat später (Es wurde auf die Banane getreten):");
-        banane.setKreummung(2);
-        banane.setVitaminC_Gehalt(6.3);
-        System.out.println("VitaminC:" + banane.getVitaminC_Gehalt());
-        System.out.println("Krümmung:" + banane.getKruemmung());
-
-        // apfel erstellen und daten geben
-
-        Obst apfel = new Obst("Boskoapfel", 4.6,175, true);
-
-        // daten auslesen
-        System.out.println("Name des Obstes:" +apfel.name);
-        System.out.println("Gewicht:"  + apfel.getGewicht());
-        System.out.println("VitaminC:" + apfel.getVitaminC_Gehalt());
-        System.out.println("Reif:" + apfel.isReif());
-
-        System.out.println("1 Monat später (Es wurde auf die Boskoapfel getreten):");
-        apfel.setVitaminC_Gehalt(2.9);
-
-        System.out.println("VitaminC:" + apfel.getVitaminC_Gehalt());
-        apfel.setGewicht(120.4);
+        Banane banane; // Deklaration - Der Datentyp der banane ist Obst.
+        banane = new Banane("Babybanane", 8.7, 120, true, 11); // Instanziierung
+                            // Ein neues OBJEKT/ eine neue INSTANZ der KLasse Obst wird erstellt.
         System.out.println();
+        /**
+         * Aufruf der toString()-Methode von Banane
+         * 'System.out.println(banane)' ist gleichbedeutend mit
+         * 'System.out.println(banane.toString())'
+         */
+        System.out.println(banane);
+        banane.setGewicht(90.9);
+        System.out.println();
+        System.out.println("Name des Obstes: " + banane.getName());
+        System.out.println("Gewicht des Obstes: " + banane.getGewicht());
 
+        Apfel apfel = new Apfel("Boskopapfel", 4.6, 275, false);
+        // = Deklaration UND Instanziierung in einer einzigen Anweisung
+        System.out.println();
+        System.out.println(apfel);
+        apfel.setReif(true);
+        apfel.setGewicht(211.3);
+        System.out.println();
+        System.out.println("Name des Obstes: " + apfel.getName());
+        System.out.println("Gewicht des Obstes: " + apfel.getGewicht());
+        System.out.println("Ist das Obst reif? - " + apfel.isReif());
+
+        Orange orange = new Orange("Saftorange", 53.2, 175, true, false);
+        System.out.println();
+        System.out.println(orange);
+        orange.setKernlos(true);
+        System.out.println();
+        System.out.println("Ist das Obst kernlos? - " + orange.isKernlos());
+
+        Banane bananeNeu = new Banane("Kochbanane", 25.2, 110.4, false, 13.1);
     }
 }
