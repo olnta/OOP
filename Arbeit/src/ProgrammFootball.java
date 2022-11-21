@@ -45,7 +45,11 @@ public class ProgrammFootball {
         Spiel spiel = new Spiel(mannschaftheim,mannschaftgast);
         System.out.println(spiel);
 
-         
+        Gameplay gameplay= new Gameplay(mannschaftheim);
+
+
+
+
 
 
 

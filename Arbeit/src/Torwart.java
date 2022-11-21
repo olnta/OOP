@@ -9,7 +9,7 @@ public class Torwart extends Spieler {
     }
 
 
-    private int getReaktion() {
+    public int getReaktion() {
         return this.reaktion;
     }
 
