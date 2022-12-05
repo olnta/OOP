@@ -8,6 +8,8 @@ public class Spiel {
     public Spiel(Mannschaft heim, Mannschaft gast){
         this.heim = heim;
         this.gast = gast;
+        ergebnis = new Ergebnis();
+        spielbericht = new StringBuilder();
     }
 
     public Mannschaft getHeim(){

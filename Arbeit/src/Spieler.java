@@ -1,7 +1,5 @@
 public class Spieler extends Person {
 
-    private String name;
-    private int alter;
     private int staerke;
     private int torschuss;
     private int motivation;
@@ -13,14 +11,6 @@ public class Spieler extends Person {
         this.torschuss = torschuss;
         this.motivation = motivation;
         this.tore = tore;
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public int getAlter() {
-        return this.alter;
     }
 
     public int getStaerke() {
@@ -40,14 +30,6 @@ public class Spieler extends Person {
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAlter(int alter) {
-        this.alter = alter;
-    }
-
     public void setStaerke(int staerke) {
         this.staerke = staerke;
     }
@@ -64,11 +46,15 @@ public class Spieler extends Person {
         this.tore = tore;
     }
 
+    public void addTor(){
+        this.tore++;
+    }
+
 
     public String toString(){
         String text;
-        text = "Name:          " + super.getName();
-        text += "\nAlter:         " + super.getAlter();
+        text = "\nName:           " + getName();
+        text += "\nAlter:         " + getAlter();
         text += "\nStärke:        " + getStaerke();
         text += "\nTorschuss:     " + getTorschuss();
         text += "\nMotivation:    " + getMotivation();

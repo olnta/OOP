@@ -24,4 +24,6 @@ public abstract class Person {
         this.alter = alter;
     }
 
+
+
 }
