@@ -1,3 +1,5 @@
+package Football;
+
 public class Ergebnis {
 
 

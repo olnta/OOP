@@ -1,5 +1,7 @@
+package Obst;
+
 /**
- * Unterklasse/Subklasse der Klasse Obst
+ * Unterklasse/Subklasse der Klasse Obst.Obst
  */
 public class Orange extends Obst {
 
@@ -9,7 +11,7 @@ public class Orange extends Obst {
     private boolean kernlos;
 
     /**
-     * Konstruktor der Klasse Orange
+     * Konstruktor der Klasse Obst.Obst.Orange
      * @param name
      * @param vitaminC_Gehalt
      * @param gewicht
@@ -44,7 +46,7 @@ public class Orange extends Obst {
     @Override
     public String toString() {
         String text;
-        text = super.toString(); //Aufruf der Methode toString() der Oberklasse Obst
+        text = super.toString(); //Aufruf der Methode toString() der Oberklasse Obst.Obst
         text += "\nkernlos? - " + this.isKernlos();
         return text;
     }

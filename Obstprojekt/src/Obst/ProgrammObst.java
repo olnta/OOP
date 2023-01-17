@@ -1,3 +1,5 @@
+package Obst;
+
 public class ProgrammObst {
 
     /**
@@ -5,12 +7,12 @@ public class ProgrammObst {
      * @param args
      */
     public static void main(String[] args) {
-        Banane banane; // Deklaration - Der Datentyp der banane ist Obst.
+        Banane banane; // Deklaration - Der Datentyp der banane ist Obst.Obst.
         banane = new Banane("Babybanane", 8.7, 120, true, 11); // Instanziierung
-                            // Ein neues OBJEKT/ eine neue INSTANZ der KLasse Obst wird erstellt.
+                            // Ein neues OBJEKT/ eine neue INSTANZ der KLasse Obst.Obst wird erstellt.
         System.out.println();
         /**
-         * Aufruf der toString()-Methode von Banane
+         * Aufruf der toString()-Methode von Obst.Banane
          * 'System.out.println(banane)' ist gleichbedeutend mit
          * 'System.out.println(banane.toString())'
          */
@@ -29,14 +31,14 @@ public class ProgrammObst {
         System.out.println();
         System.out.println("Name des Obstes: " + apfel.getName());
         System.out.println("Gewicht des Obstes: " + apfel.getGewicht());
-        System.out.println("Ist das Obst reif? - " + apfel.isReif());
+        System.out.println("Ist das Obst.Obst reif? - " + apfel.isReif());
 
         Orange orange = new Orange("Saftorange", 53.2, 175, true, false);
         System.out.println();
         System.out.println(orange);
         orange.setKernlos(true);
         System.out.println();
-        System.out.println("Ist das Obst kernlos? - " + orange.isKernlos());
+        System.out.println("Ist das Obst.Obst kernlos? - " + orange.isKernlos());
 
         Banane bananeNeu = new Banane("Kochbanane", 25.2, 110.4, false, 13.1);
     }

@@ -1,3 +1,5 @@
+package Football;
+
 public class Trainer extends Person {
 
     private String name;

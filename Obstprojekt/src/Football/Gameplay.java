@@ -1,3 +1,4 @@
+package Football;
 
 import java.util.Random;
 
@@ -73,7 +74,7 @@ public class Gameplay {
                 }else{
                     spiel.getErgebnis().addToreHeim();
                 }
-                spiel.getSpielbericht().append("\n" + spielminute + ". Spielminute: Der Spieler " + zufalligerSpielerAngreifer.getName() + " hat ein Tor erzielt." + "\t\t");
+                spiel.getSpielbericht().append("\n" + spielminute + ". Spielminute: Der Football.Spieler " + zufalligerSpielerAngreifer.getName() + " hat ein Tor erzielt." + "\t\t");
             } else {
                 spiel.getSpielbericht().append("\n" + spielminute + ". Spielminute: Torschuss abgewert durch: " + verteidiger.getTorwart().getName());
             }
@@ -137,7 +138,7 @@ public class Gameplay {
     /**
      * ToDo:
      * neue Variable zufaelligerSpielerAngreifer =
-     * mithilfe einer Zufallszahl einen Spieler aus der spielerListe (= ArrayList<Spieler>) von angreifer
+     * mithilfe einer Zufallszahl einen Football.Spieler aus der spielerListe (= ArrayList<Football.Spieler>) von angreifer
      * holen/"getten" [Auf den ersten Blick schwer!]
      */
 
@@ -146,12 +147,12 @@ public class Gameplay {
      * ToDo:
      * Eine Fallunterscheidung für die existierende Klassenmethode erzieltTor() treffen:
      * Falls erzieltTor() true liefert:
-     *     1. zufaelligerSpielerAngreifer ein Tor hinzufügen (Dazu vorher in Spieler eine Methode anlegen,
+     *     1. zufaelligerSpielerAngreifer ein Tor hinzufügen (Dazu vorher in Football.Spieler eine Methode anlegen,
      *     die die Anzahl der Tore des Spielers um 1 erhöht!)
      *     2. Fallunterscheidung ob angreifer die Gastmannschaft des Spiels ist
      *         a) falls ja: Für ergebnis von spiel (spiel ist der an diese Methode spielen übergebene
      *         Parameter) mithilfe der Methode addToreGast() die Toranzahl der Gastmannschaft erhöhen
-     *         (siehe Klassen Spiel und Ergebnis!)
+     *         (siehe Klassen Football.Spiel und Ergebnis!)
      *         b) sonst: dasselbe wie oben, jedoch bezogen auf die Toranzahl der Heimmannschaft
      *     3. Den Spielbericht von spiel "getten" und diesem mittels der Methode append(...) einen neuen
      *     Eintrag hinzufügen (z. B. "36. Spielminute: Treffer durch Abdel Alleskönner", wobei die Werte

@@ -1,3 +1,5 @@
+package Football;
+
 public class Spieler extends Person {
 
     private int staerke;
@@ -53,7 +55,7 @@ public class Spieler extends Person {
 
     public String toString(){
         String text;
-        text = "\nName:           " + getName();
+        text = "\nName:          " + getName();
         text += "\nAlter:         " + getAlter();
         text += "\nStärke:        " + getStaerke();
         text += "\nTorschuss:     " + getTorschuss();

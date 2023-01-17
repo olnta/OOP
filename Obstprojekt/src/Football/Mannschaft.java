@@ -1,3 +1,5 @@
+package Football;
+
 import java.util.ArrayList;
 
 public class Mannschaft {
@@ -84,9 +86,9 @@ public class Mannschaft {
         String text;
         text= "Name:     "         + getName();
         text += "\n=========================";
-        text += "\n\nTrainer:\n"           + getTrainer();
-        text += "\n\nTorwart:\n"           + getTorwart();
-        text += "\n\nListe der Spieler:";
+        text += "\n\nFootball.Trainer:\n"           + getTrainer();
+        text += "\n\nFootball.Torwart:\n"           + getTorwart();
+        text += "\n\nListe der Football.Spieler:";
         for (Spieler s: getSpielerliste()){
             text += "\n" + s;
         }

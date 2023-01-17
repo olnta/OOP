@@ -1,6 +1,8 @@
+package Obst;
+
 /**
- * Klasse Obst, die also Oberklasse/Superklasse der Klassen
- * Apfel, Banane, Weintrauben dienen soll.
+ * Klasse Obst.Obst, die also Oberklasse/Superklasse der Klassen
+ * Obst.Apfel, Obst.Banane, Weintrauben dienen soll.
  *
  * Wurde als ABSTRAKTE KLASSE deklariert, weil sie nur für
  * die Vererbung dienen soll. Objekte/Instanzen hingegen

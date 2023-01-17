@@ -1,12 +1,16 @@
+package Obst;
+
+import Obst.Obst;
+
 /**
- * a) Unterklasse/Subklasse der Klasse Obst
+ * a) Unterklasse/Subklasse der Klasse Obst.Obst
  * b) VERERBUNG: erbt, also kennt alle Attribute und Methoden die
- * die Oberklasse/Superklasse Obst hat und kann diese ebenfalls verwenden
- * (hat allerdings nur auf öffentliche(!) Attribute und Methoden von Obst
+ * die Oberklasse/Superklasse Obst.Obst hat und kann diese ebenfalls verwenden
+ * (hat allerdings nur auf öffentliche(!) Attribute und Methoden von Obst.Obst
  * direkten Zugriff)
  * c) Die Vererbung wird durch das Schlüsselwort EXTENDS ausgelöst
  */
-public class Banane extends Obst{
+public class Banane extends Obst {
 
     /**
      * privates Klassenattribut kruemmung
@@ -14,8 +18,8 @@ public class Banane extends Obst{
     private double kruemmung;
 
     /**
-     * Konstruktor der Klasse Banane
-     * Die Methode super(...) im Konstruktor ruft den Konstruktor der Oberklasse Obst auf.
+     * Konstruktor der Klasse Obst.Banane
+     * Die Methode super(...) im Konstruktor ruft den Konstruktor der Oberklasse Obst.Obst auf.
      * @param name
      * @param vitaminC_Gehalt
      * @param gewicht
@@ -24,7 +28,7 @@ public class Banane extends Obst{
      */
     public Banane(String name, double vitaminC_Gehalt, double gewicht, boolean reif, double kruemmung) {
         /**
-         * Mit super wird hier der Konstruktor der Oberklasse Obst
+         * Mit super wird hier der Konstruktor der Oberklasse Obst.Obst
          * aufgerufen und die vier Attribute name, vitaminC_Gehalt, gewicht
          * und reif werden dabei mit übergeben.
          */
@@ -55,7 +59,7 @@ public class Banane extends Obst{
     @Override
     public String toString() {
         String text;
-        text = super.toString(); //Aufruf der Methode toString() der Oberklasse Obst
+        text = super.toString(); //Aufruf der Methode toString() der Oberklasse Obst.Obst
         text += "\nKrümmung: " + this.getKruemmung();
         return text;
     }
