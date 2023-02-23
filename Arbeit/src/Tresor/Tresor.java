@@ -55,14 +55,14 @@ public class Tresor {
         }
         return getGegenstand(id);
     }
-        // hinter der Schleife (Hier kommt der Ablauf auch NUR DANN HIN, wenn vorher kein erfolgreiches
-        // RETURN stattfinden konnte!): Exception werfen
+    // hinter der Schleife (Hier kommt der Ablauf auch NUR DANN HIN, wenn vorher kein erfolgreiches
+    // RETURN stattfinden konnte!): Exception werfen
 
 
-    public String toString(){
+    public String toString() {
         String t;
         t = "Gegenstände Liste: ";
-        for (Gegenstand g: gegenstaende){
+        for (Gegenstand g : gegenstaende) {
             t += "\n" + g;
         }
         t += "\n\nGegestände berechenen: " + berechneGesamtwert();

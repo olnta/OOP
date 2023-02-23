@@ -6,9 +6,9 @@ public class Trainer extends Person {
     private int alter;
     private int erfahrung;
 
-    public Trainer (String name, int alter, int erfahrung){
-        super(name,alter);
-        this.erfahrung =erfahrung;
+    public Trainer(String name, int alter, int erfahrung) {
+        super(name, alter);
+        this.erfahrung = erfahrung;
     }
 
     public String getName() {
@@ -36,11 +36,11 @@ public class Trainer extends Person {
     }
 
 
-    public String toString(){
+    public String toString() {
         String text;
         text = "Name:          " + super.getName();
-        text+= "\nAlter:         " + super.getAlter();
-        text+= "\nErfahrung:     " + getErfahrung();
+        text += "\nAlter:         " + super.getAlter();
+        text += "\nErfahrung:     " + getErfahrung();
         text += "\n-----------------------------------";
         return text;
     }

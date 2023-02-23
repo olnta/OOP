@@ -5,7 +5,7 @@ public abstract class Person {
     private String name;
     private int alter;
 
-    public Person(String name, int alter){
+    public Person(String name, int alter) {
         this.name = name;
         this.alter = alter;
     }
@@ -25,7 +25,6 @@ public abstract class Person {
     public void setAlter(int alter) {
         this.alter = alter;
     }
-
 
 
 }

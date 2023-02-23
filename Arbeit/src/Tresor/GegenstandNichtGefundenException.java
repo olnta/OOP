@@ -1,10 +1,10 @@
 package Tresor;
 
-public class GegenstandNichtGefundenException extends Exception{
+public class GegenstandNichtGefundenException extends Exception {
 
     private int id;
 
-    public GegenstandNichtGefundenException(int id){
+    public GegenstandNichtGefundenException(int id) {
         this.id = id;
     }
 
@@ -12,8 +12,8 @@ public class GegenstandNichtGefundenException extends Exception{
         return id;
     }
 
-    public String getMessage(){
-        return  getId() + " Id nicht gefunden.";
+    public String getMessage() {
+        return getId() + " Id nicht gefunden.";
 
     }
 }

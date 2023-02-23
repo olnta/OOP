@@ -31,7 +31,7 @@ public class IO {
 
     public static double readdouble() throws IOException {
         while (true) {
-            String text = readString().replace(",",".");
+            String text = readString().replace(",", ".");
             try {
                 double zahl = Double.parseDouble(text);
                 return zahl;
@@ -45,13 +45,11 @@ public class IO {
         while (true) {
             String eingabe = readString();
             if (eingabe.equals("J")
-                    ||(eingabe.equalsIgnoreCase("yes"))
-                    ||(eingabe.equalsIgnoreCase("ja"))) {
+                    || (eingabe.equalsIgnoreCase("yes"))
+                    || (eingabe.equalsIgnoreCase("ja"))) {
                 return true;
-            }
-
-            else if ((eingabe.equals("nein")
-                    ||(eingabe.equalsIgnoreCase("no"))
+            } else if ((eingabe.equals("nein")
+                    || (eingabe.equalsIgnoreCase("no"))
                     || (eingabe.equalsIgnoreCase("n")))) {
 
                 return false;
@@ -63,46 +61,51 @@ public class IO {
 
 
     }
-    public static int[] readintArray()throws IOException{
+
+    public static int[] readintArray() throws IOException {
         System.out.println(" wie viele werte möchte sie eingeben");
-        int anzahl=readint();
+        int anzahl = readint();
         return readintArray(anzahl);
 
     }
-    public static int[] readintArray(int anzahl)throws IOException{
-        int[] liste =new int[anzahl];
-        for (int i=0;i< liste.length;i++){
-            System.out.println("wert"+(i+1)+": ");
-            liste[i]=readint();
+
+    public static int[] readintArray(int anzahl) throws IOException {
+        int[] liste = new int[anzahl];
+        for (int i = 0; i < liste.length; i++) {
+            System.out.println("wert" + (i + 1) + ": ");
+            liste[i] = readint();
         }
         return liste;
     }
 
-    public static double[] readdoubleArray()throws IOException{
+    public static double[] readdoubleArray() throws IOException {
         System.out.println(" wie viele werte möchte sie eingeben");
-        int anzahl=readint();
+        int anzahl = readint();
         return readdoubleArray(anzahl);
 
     }
-    public static double[] readdoubleArray(int anzahl)throws IOException{
-        double[] liste =new double[anzahl];
-        for (int i=0;i< liste.length;i++){
-            System.out.println("wert"+(i+1)+": ");
-            liste[i]=readint();
+
+    public static double[] readdoubleArray(int anzahl) throws IOException {
+        double[] liste = new double[anzahl];
+        for (int i = 0; i < liste.length; i++) {
+            System.out.println("wert" + (i + 1) + ": ");
+            liste[i] = readint();
         }
         return liste;
     }
-    public static String[] readStringArray()throws IOException{
+
+    public static String[] readStringArray() throws IOException {
         System.out.println(" wie viele werte möchte sie eingeben");
-        int anzahl=readint();
+        int anzahl = readint();
         return readStringArray(anzahl);
 
     }
-    public static String[] readStringArray(int anzahl)throws IOException{
-        String[] liste =new String[anzahl];
-        for (int i=0;i< liste.length;i++){
-            System.out.println("wert"+(i+1)+": ");
-            liste[i]=readString();
+
+    public static String[] readStringArray(int anzahl) throws IOException {
+        String[] liste = new String[anzahl];
+        for (int i = 0; i < liste.length; i++) {
+            System.out.println("wert" + (i + 1) + ": ");
+            liste[i] = readString();
         }
         return liste;
     }

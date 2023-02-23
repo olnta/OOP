@@ -41,10 +41,10 @@ public class Konto {
         this.kontoStand = kontoStand;
     }
 
-    public void einzahlen(double betrag) throws BetragNichtKorrektException{
-        if(betrag>=0) {
+    public void einzahlen(double betrag) throws BetragNichtKorrektException {
+        if (betrag >= 0) {
             this.kontoStand += betrag;
-        }else{
+        } else {
             throw new BetragNichtKorrektException(betrag);
         }
     }
@@ -56,17 +56,18 @@ public class Konto {
             return true;
 
         } else {
-            throw new KreditlimitUeberschrittenException(this.kreditLimit,this.kontoStand);
+            throw new KreditlimitUeberschrittenException(this.kreditLimit, this.kontoStand);
 
-            }
+        }
 
     }
-    public String toString(){
+
+    public String toString() {
         String text;
-        text="\n"+"Inhaber "  +getInhaber();
-        text+="\n"+"kontostand " +   getKontoStand();
-        text+="\n"+"Kreditlimit "  +  getKreditLimit();
-        text+="\n"+"Zinsguthaben "+ getZinsGuthaben();
+        text = "\n" + "Inhaber " + getInhaber();
+        text += "\n" + "kontostand " + getKontoStand();
+        text += "\n" + "Kreditlimit " + getKreditLimit();
+        text += "\n" + "Zinsguthaben " + getZinsGuthaben();
         return text;
     }
 }

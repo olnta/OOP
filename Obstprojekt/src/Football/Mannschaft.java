@@ -11,9 +11,9 @@ public class Mannschaft {
     private ArrayList<Spieler> spielerliste;
 
     //Konstruktor
-    public Mannschaft( String name, Trainer trainer, Torwart torwart, ArrayList<Spieler> spielerliste){
+    public Mannschaft(String name, Trainer trainer, Torwart torwart, ArrayList<Spieler> spielerliste) {
         super();
-        this.name =name;
+        this.name = name;
         this.trainer = trainer;
         this.torwart = torwart;
         this.spielerliste = spielerliste;
@@ -38,9 +38,9 @@ public class Mannschaft {
         return this.spielerliste;
     }
 
-    public int getStaerke(){
+    public int getStaerke() {
         int gesamtStaerke = 0;
-        for (int i = 0; i < spielerliste.size(); i++){
+        for (int i = 0; i < spielerliste.size(); i++) {
             gesamtStaerke += spielerliste.get(i).getStaerke();
         }
         gesamtStaerke = gesamtStaerke / spielerliste.size();
@@ -49,10 +49,10 @@ public class Mannschaft {
 
     }
 
-    public int getMotivation(){
+    public int getMotivation() {
         int teamMotivation = 0;
         int summeMotivation = 0;
-        for ( Spieler spieler : spielerliste){
+        for (Spieler spieler : spielerliste) {
             summeMotivation += spieler.getMotivation();
         }
 
@@ -62,14 +62,12 @@ public class Mannschaft {
     }
 
 
-
-
     //Setter
-    public void setName (String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setTrainer (Trainer trainer){
+    public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
 
@@ -77,29 +75,26 @@ public class Mannschaft {
         this.torwart = torwart;
     }
 
-    public void setSpielerliste(ArrayList<Spieler> spielerliste){
+    public void setSpielerliste(ArrayList<Spieler> spielerliste) {
         this.spielerliste = spielerliste;
     }
 
 
-    public String toString(){
+    public String toString() {
         String text;
-        text= "Name:     "         + getName();
+        text = "Name:     " + getName();
         text += "\n=========================";
-        text += "\n\nFootball.Trainer:\n"           + getTrainer();
-        text += "\n\nFootball.Torwart:\n"           + getTorwart();
+        text += "\n\nFootball.Trainer:\n" + getTrainer();
+        text += "\n\nFootball.Torwart:\n" + getTorwart();
         text += "\n\nListe der Football.Spieler:";
-        for (Spieler s: getSpielerliste()){
+        for (Spieler s : getSpielerliste()) {
             text += "\n" + s;
         }
-        text +="\n\nStärke         " + getStaerke();
+        text += "\n\nStärke         " + getStaerke();
         text += "\nMotivation     " + getMotivation();
         text += "\n";
         return text;
     }
-
-
-
 
 
 }

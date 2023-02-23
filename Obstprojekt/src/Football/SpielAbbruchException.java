@@ -4,7 +4,7 @@ public class SpielAbbruchException extends Exception {
 
     private int spielMinute;
 
-    public SpielAbbruchException(int spielMinute){
+    public SpielAbbruchException(int spielMinute) {
         this.spielMinute = spielMinute;
     }
 
@@ -12,7 +12,7 @@ public class SpielAbbruchException extends Exception {
         return spielMinute;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return "Das Spiel muss abgebrochen werden";
     }
 

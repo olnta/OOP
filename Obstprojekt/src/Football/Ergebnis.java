@@ -8,14 +8,14 @@ public class Ergebnis {
     private int toreGast;
 
     //Konstruktor
-    public Ergebnis(){
+    public Ergebnis() {
         this.toreHeim = toreHeim;
         this.toreGast = toreGast;
 
     }
 
     //Getter
-    public int getToreHeim(){
+    public int getToreHeim() {
         return this.toreHeim;
     }
 
@@ -24,7 +24,7 @@ public class Ergebnis {
     }
 
     //Setter
-    public void addToreHeim(){
+    public void addToreHeim() {
         // toreHeim = toreHeim + 1
         toreHeim++;
     }
@@ -33,7 +33,7 @@ public class Ergebnis {
         toreGast++;
     }
 
-    public String toString(){
+    public String toString() {
         String text;
         text = "\nGast Tore: " + getToreGast();
         text += "\nHeim Tore: " + getToreHeim();

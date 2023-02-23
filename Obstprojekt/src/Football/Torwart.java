@@ -5,7 +5,7 @@ public class Torwart extends Spieler {
     private int reaktion;
 
 
-    public Torwart(String name, int alter, int staerke, int motivation,int reaktion ) {
+    public Torwart(String name, int alter, int staerke, int motivation, int reaktion) {
         super(name, alter, staerke, 0, motivation, reaktion);
         this.reaktion = reaktion;
     }
@@ -15,11 +15,11 @@ public class Torwart extends Spieler {
         return this.reaktion;
     }
 
-    public void setReaktion(int reaktion){
+    public void setReaktion(int reaktion) {
         this.reaktion = reaktion;
     }
 
-    public String toString(){
+    public String toString() {
         String text;
         text = super.toString();
         text += "\nReaktion: " + getReaktion();

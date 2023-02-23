@@ -5,7 +5,7 @@ public abstract class Gegenstand {
     private int id;
     private double wert;
 
-    public Gegenstand(int id, double wert){
+    public Gegenstand(int id, double wert) {
         this.id = id;
         this.wert = wert;
     }
@@ -22,7 +22,7 @@ public abstract class Gegenstand {
         this.wert = wert;
     }
 
-    public String toString(){
+    public String toString() {
         String text;
         text = "\nID: " + getId();
         text += "\nWert: " + getWert();

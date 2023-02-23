@@ -7,35 +7,35 @@ public class Spiel {
     private Ergebnis ergebnis;
     private StringBuilder spielbericht;
 
-    public Spiel(Mannschaft heim, Mannschaft gast){
+    public Spiel(Mannschaft heim, Mannschaft gast) {
         this.heim = heim;
         this.gast = gast;
         ergebnis = new Ergebnis();
         spielbericht = new StringBuilder();
     }
 
-    public Mannschaft getHeim(){
+    public Mannschaft getHeim() {
         return this.heim;
     }
 
-    public Mannschaft getGast(){
+    public Mannschaft getGast() {
         return this.gast;
     }
 
-    public Ergebnis getErgebnis(){
+    public Ergebnis getErgebnis() {
         return this.ergebnis;
     }
 
-    public StringBuilder getSpielbericht(){
+    public StringBuilder getSpielbericht() {
         return this.spielbericht;
     }
 
-    public String toString(){
+    public String toString() {
         String text;
-        text = "Heim:"              + getHeim();
-        text += "\nGast:"           + getGast();
-        text += "\nErgebnis:"       + getErgebnis();
-        text += "\nSpielbericht:"   + getSpielbericht();
+        text = "Heim:" + getHeim();
+        text += "\nGast:" + getGast();
+        text += "\nErgebnis:" + getErgebnis();
+        text += "\nSpielbericht:" + getSpielbericht();
         return text;
     }
 

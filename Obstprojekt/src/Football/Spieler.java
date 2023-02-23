@@ -7,8 +7,8 @@ public class Spieler extends Person {
     private int motivation;
     private int tore;
 
-    public Spieler (String name, int alter, int staerke, int torschuss, int motivation, int tore){
-        super(name , alter);
+    public Spieler(String name, int alter, int staerke, int torschuss, int motivation, int tore) {
+        super(name, alter);
         this.staerke = staerke;
         this.torschuss = torschuss;
         this.motivation = motivation;
@@ -48,12 +48,12 @@ public class Spieler extends Person {
         this.tore = tore;
     }
 
-    public void addTor(){
+    public void addTor() {
         this.tore++;
     }
 
 
-    public String toString(){
+    public String toString() {
         String text;
         text = "\nName:          " + getName();
         text += "\nAlter:         " + getAlter();

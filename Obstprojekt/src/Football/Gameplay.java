@@ -18,7 +18,7 @@ public class Gameplay {
          */
 
         int mannschaftswert = mannschaft.getMotivation() * mannschaft.getStaerke() * mannschaft.getTrainer().getErfahrung();
-        if (mannschaftswert < 1){
+        if (mannschaftswert < 1) {
             mannschaftswert = 1;
         }
 
@@ -26,23 +26,23 @@ public class Gameplay {
     }
 
 
-    private static boolean erzieltTor(Spieler schuetze, Torwart torwart){
+    private static boolean erzieltTor(Spieler schuetze, Torwart torwart) {
         Random r = new Random();
-        int  staerkeTor = schuetze.getTorschuss() + r.nextInt(5) - 2;
+        int staerkeTor = schuetze.getTorschuss() + r.nextInt(5) - 2;
 
-        if (staerkeTor < 1){
+        if (staerkeTor < 1) {
             staerkeTor = 1;
         }
 
         int reaktion = torwart.getReaktion() + r.nextInt(5) - 2;
 
-        if (reaktion < 1){
+        if (reaktion < 1) {
             reaktion = 1;
         }
 
-        if (staerkeTor > reaktion){
+        if (staerkeTor > reaktion) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -53,13 +53,13 @@ public class Gameplay {
         Mannschaft verteidiger;
 
         int spieldauer = SPIELZEIT + random.nextInt(MAX_NACHSPIELZEIT + 1);
-        for(int spielminute = (random.nextInt(MAX_DAUER_BIS_AKTION + 1) + 1);
-            spielminute <= spieldauer;
-            spielminute += random.nextInt(MAX_DAUER_BIS_AKTION + 1)){
+        for (int spielminute = (random.nextInt(MAX_DAUER_BIS_AKTION + 1) + 1);
+             spielminute <= spieldauer;
+             spielminute += random.nextInt(MAX_DAUER_BIS_AKTION + 1)) {
             int mannschaftsWertHeim = ermittelMannschaftsWert(spiel.getHeim());
             int mannschaftsWertGast = ermittelMannschaftsWert(spiel.getGast());
             int zufallMannschaftSpielzug = random.nextInt(mannschaftsWertGast + mannschaftsWertHeim + 1);
-            if (zufallMannschaftSpielzug > mannschaftsWertHeim){
+            if (zufallMannschaftSpielzug > mannschaftsWertHeim) {
                 angreifer = spiel.getGast();
                 verteidiger = spiel.getHeim();
             } else {
@@ -67,11 +67,11 @@ public class Gameplay {
                 verteidiger = spiel.getGast();
             }
             Spieler zufalligerSpielerAngreifer = angreifer.getSpielerliste().get(random.nextInt(angreifer.getSpielerliste().size()));
-            if (erzieltTor(zufalligerSpielerAngreifer, verteidiger.getTorwart()) == true){
+            if (erzieltTor(zufalligerSpielerAngreifer, verteidiger.getTorwart()) == true) {
                 zufalligerSpielerAngreifer.addTor();
-                if (angreifer == spiel.getGast()){
+                if (angreifer == spiel.getGast()) {
                     spiel.getErgebnis().addToreGast();
-                }else{
+                } else {
                     spiel.getErgebnis().addToreHeim();
                 }
                 spiel.getSpielbericht().append("\n" + spielminute + ". Spielminute: Der Football.Spieler " + zufalligerSpielerAngreifer.getName() + " hat ein Tor erzielt." + "\t\t");
@@ -79,7 +79,7 @@ public class Gameplay {
                 spiel.getSpielbericht().append("\n" + spielminute + ". Spielminute: Torschuss abgewert durch: " + verteidiger.getTorwart().getName());
             }
         }
-        spiel.getSpielbericht().append("\n\n" + spiel.getHeim().getName() +" vs " + spiel.getGast().getName() + spiel.getErgebnis());
+        spiel.getSpielbericht().append("\n\n" + spiel.getHeim().getName() + " vs " + spiel.getGast().getName() + spiel.getErgebnis());
 
     }
 

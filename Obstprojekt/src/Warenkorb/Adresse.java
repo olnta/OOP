@@ -1,4 +1,6 @@
-package Konto;
+
+package Warenkorb;
+
 
 public class Adresse {
 
@@ -18,28 +20,28 @@ public class Adresse {
         return strasse;
     }
 
-    public String getHausNr() {
-        return hausNr;
-    }
-
-    public String getPlz() {
-        return plz;
-    }
-
-    public String getOrt() {
-        return ort;
-    }
-
     public void setStrasse(String strasse) {
         this.strasse = strasse;
+    }
+
+    public String getHausNr() {
+        return hausNr;
     }
 
     public void setHausNr(String hausNr) {
         this.hausNr = hausNr;
     }
 
+    public String getPlz() {
+        return plz;
+    }
+
     public void setPlz(String plz) {
         this.plz = plz;
+    }
+
+    public String getOrt() {
+        return ort;
     }
 
     public void setOrt(String ort) {
@@ -48,11 +50,8 @@ public class Adresse {
 
     public String toString() {
         String text;
-        text = "\nStraße: " + getStrasse();
-        text += "\nHausnummer: " + getHausNr();
-        text += "\nPlz: " + getPlz();
-        text += "\nOrt: " + getOrt();
+        text = "" + getStrasse() + " " + getHausNr();
+        text += "\nOrt und Plz: " + getOrt() + " " + getPlz();
         return text;
-
     }
 }

@@ -5,7 +5,7 @@ public class Aktie extends Gegenstand {
     private String unternehmen;
     private double nennwert;
 
-    public Aktie(int id, double wert, String unternehmen, double nennwert){
+    public Aktie(int id, double wert, String unternehmen, double nennwert) {
         super(id, wert);
         this.unternehmen = unternehmen;
         this.nennwert = nennwert;
@@ -27,7 +27,7 @@ public class Aktie extends Gegenstand {
         this.nennwert = nennwert;
     }
 
-    public String toString(){
+    public String toString() {
         String text;
         super.toString();
         text = "\nUnternehmen Aktien: " + getUnternehmen();

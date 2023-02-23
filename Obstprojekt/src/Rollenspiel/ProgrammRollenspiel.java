@@ -4,17 +4,15 @@ public class ProgrammRollenspiel {
 
     public static void main(String[] args) {
 
-        Elfe elfe = new Elfe("Bloodelf",5);
-        Zauberer zauberer = new Zauberer("Celestial", 5,5);
-
-
+        Elfe elfe = new Elfe("Bloodelf", 5);
+        Zauberer zauberer = new Zauberer("Celestial", 5, 5);
 
 
         System.out.println(elfe);
         System.out.println(zauberer);
         System.out.println();
 
-        try{
+        try {
             elfe.rennen();
             zauberer.kaempfen();
             elfe.kaempfen();
@@ -22,7 +20,7 @@ public class ProgrammRollenspiel {
             zauberer.zauber();
             zauberer.laufen();
             zauberer.zauber();
-        } catch (KeineKraftException e){
+        } catch (KeineKraftException e) {
             System.out.println(e.getMessage());
         }
     }
