@@ -48,7 +48,7 @@ public class Adresse {
 
     public String toString() {
         String text;
-        text = "Adresse" +  getStrasse() + " " + getHausNr();
+        text = getStrasse() + " " + getHausNr();
         text += "\nOrt und Plz: " + getOrt() + " " + getPlz();
         return text;
     }

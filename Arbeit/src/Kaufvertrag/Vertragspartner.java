@@ -48,10 +48,10 @@ public class Vertragspartner {
     }
 
     public void erstelleVertragsPartner(Vertragspartner vertragspartner, PrintWriter pw){
-        pw.println(vertragspartner.getVorname() + "," + vertragspartner.getNachname() + ";");
-        pw.println(vertragspartner.getAdresse().getStrasse() + " " + vertragspartner.getAdresse().getHausNr() + ";");
-        pw.println(vertragspartner.getAdresse().getPlz() + ";");
-        pw.println(vertragspartner.getAdresse().getOrt() + ";");
+        pw.print(vertragspartner.getVorname() + "," + vertragspartner.getNachname() + ";");
+        pw.print(vertragspartner.getAdresse().getStrasse() + " " + vertragspartner.getAdresse().getHausNr() + ";");
+        pw.print(vertragspartner.getAdresse().getPlz() + ";");
+        pw.print(vertragspartner.getAdresse().getOrt() + ";");
     }
 
     public String toString() {

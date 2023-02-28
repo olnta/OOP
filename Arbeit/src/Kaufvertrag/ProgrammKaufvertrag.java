@@ -41,7 +41,8 @@ public class ProgrammKaufvertrag {
 
         pw.print("Verkaeufer;");
         verkaeufer1.erstelleVertragsPartner(verkaeufer1,pw);
-        pw.println("Kaeufer;");
+        pw.println();
+        pw.print("Kaeufer;");
         kauefer1.erstelleVertragsPartner(kauefer1,pw);
 
 
