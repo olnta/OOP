@@ -48,7 +48,7 @@ public class Vertragspartner {
     }
 
     public void erstelleVertragsPartner(Vertragspartner vertragspartner, PrintWriter pw){
-        pw.print(vertragspartner.getVorname() + "," + vertragspartner.getNachname() + ";");
+        pw.print(vertragspartner.getVorname() + " " + vertragspartner.getNachname() + ";");
         pw.print(vertragspartner.getAdresse().getStrasse() + " " + vertragspartner.getAdresse().getHausNr() + ";");
         pw.print(vertragspartner.getAdresse().getPlz() + ";");
         pw.print(vertragspartner.getAdresse().getOrt() + ";");

@@ -46,9 +46,9 @@ public class Kaufvertrag {
         text = "=============================";
         text += "\nVerkäufer: " + getVerkaeufer();
         text += "\n\n=============================";
-        text += "\n\nKäufer: " + getKaeufer();
+        text += "\nKäufer: " + getKaeufer();
         text += "\n\n=============================";
-        text += "\n\nWaren Liste: " + getWare();
+        text += "\nWaren Liste: " + getWare();
         return text;
     }
 }
