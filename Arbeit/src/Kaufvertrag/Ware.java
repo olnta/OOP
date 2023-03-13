@@ -53,14 +53,14 @@ public class Ware {
         String text;
         text = "\n\nBezeichnung: " + getBezeichnung();
         text += "\nBeschreibung: " + getBescheirbung();
-        text += "\nPreis: " + getPreis();
-        text += "\nBesonderheiten ";
+        text += "\nPreis: " + getPreis() + "€";
+        text += "\nBesonderheiten: ";
         for (String b : besonderheiten) {
-            text += "\n" + b;
+            text += b;
         }
-        text += "\nMängel";
+        text += "\nMängel: ";
         for (String m : maengel) {
-            text += "\n" + m + "\n";
+            text += m + "\n";
         }
         return text;
     }

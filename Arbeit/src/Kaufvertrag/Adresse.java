@@ -49,7 +49,7 @@ public class Adresse {
     public String toString() {
         String text;
         text = getStrasse() + " " + getHausNr();
-        text += "\nOrt und Plz: " + getOrt() + " " + getPlz();
+        text += "\nOrt und Plz: " + getOrt() + " " + getPlz() + "\n===========================";
         return text;
     }
 }

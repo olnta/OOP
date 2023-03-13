@@ -47,16 +47,11 @@ public class Vertragspartner {
         this.adresse = adresse;
     }
 
-    public void erstelleVertragsPartner(Vertragspartner vertragspartner, PrintWriter pw){
-        pw.print(vertragspartner.getVorname() + " " + vertragspartner.getNachname() + ";");
-        pw.print(vertragspartner.getAdresse().getStrasse() + " " + vertragspartner.getAdresse().getHausNr() + ";");
-        pw.print(vertragspartner.getAdresse().getPlz() + ";");
-        pw.print(vertragspartner.getAdresse().getOrt() + ";");
-    }
 
     public String toString() {
         String text;
-        text = "\n\nVorname: " + getVorname();
+        text = "\n===========================";
+        text += "\nVorname: " + getVorname();
         text += "\nNachname: " + getNachname();
         text += "\nAusweis Nummer: " + getAusweisNr();
         text += "\nAdresse: " + getAdresse();
