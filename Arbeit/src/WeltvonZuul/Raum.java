@@ -15,11 +15,14 @@ package WeltvonZuul;
 
 public class Raum
 {
-    public String beschreibung;
-    public Raum nordausgang;
-    public Raum suedausgang;
-    public Raum ostausgang;
-    public Raum westausgang;
+    private String beschreibung;
+    private Raum nordausgang;
+    private Raum suedausgang;
+    private Raum ostausgang;
+    private Raum westausgang;
+    private Raum treppeNachOben;
+    private Raum treppeNachUnten;
+
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
@@ -32,6 +35,8 @@ public class Raum
         this.beschreibung = beschreibung;
     }
 
+
+
     /**
      * Definiere die Ausgänge dieses Raums. Jede Richtung
      * führt entweder in einen anderen Raum oder ist 'null'
@@ -40,9 +45,12 @@ public class Raum
      * @param osten Der Osteingang.
      * @param sueden Der Südeingang.
      * @param westen Der Westeingang.
+     *
      */
+
     public void setzeAusgaenge(Raum norden, Raum osten,
-                               Raum sueden, Raum westen)
+                               Raum sueden, Raum westen,
+                               Raum oben, Raum unten)
     {
         if(norden != null)
             nordausgang = norden;
@@ -52,7 +60,55 @@ public class Raum
             suedausgang = sueden;
         if(westen != null)
             westausgang = westen;
+        if(oben != null)
+            treppeNachOben = oben;
+        if(unten != null)
+            treppeNachUnten = unten;
     }
+
+    public Raum getAusgang(String richtung) {
+
+        if(richtung.equals("north")) {
+            return nordausgang;
+        }
+        if(richtung.equals("east")) {
+            return ostausgang;
+        }
+        if(richtung.equals("south")) {
+            return suedausgang;
+        }
+        if(richtung.equals("west")) {
+            return westausgang;
+        }
+        if(richtung.equals("up")) {
+            return treppeNachOben;
+        }
+        if(richtung.equals("down")) {
+            return  treppeNachUnten;
+        } else {
+            return null;
+        }
+    }
+
+
+    public String ausgaengeToString(){
+
+        String alleAusgange = "";
+        if(this.nordausgang != null)
+           alleAusgange += "north";
+        if(this.ostausgang != null)
+            alleAusgange += "east";
+        if(this.suedausgang != null)
+            alleAusgange += "south";
+        if(this.westausgang != null)
+            alleAusgange += "west";
+        if(this.treppeNachOben != null)
+           alleAusgange += "up";
+        if(this.treppeNachUnten != null)
+           alleAusgange += "down";
+        return alleAusgange;
+    }
+
 
     /**
      * @return Die Beschreibung dieses Raums.
