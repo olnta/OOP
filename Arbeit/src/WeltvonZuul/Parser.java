@@ -39,7 +39,7 @@ public class Parser
         String wort1 = null;
         String wort2 = null;
 
-        System.out.print("> ");     // Eingabeaufforderung
+        System.out.print("\n> ");     // Eingabeaufforderung
 
         eingabezeile = leser.nextLine();
 

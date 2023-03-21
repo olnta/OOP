@@ -1,5 +1,7 @@
 package WeltvonZuul;
 
+import java.util.HashMap;
+
 /**
  * Diese Klasse modelliert Räume in der Welt von Zuul.
  *
@@ -13,15 +15,10 @@ package WeltvonZuul;
  * @version 2008.03.30
  */
 
-public class Raum
-{
-    private String beschreibung;
-    private Raum nordausgang;
-    private Raum suedausgang;
-    private Raum ostausgang;
-    private Raum westausgang;
-    private Raum treppeNachOben;
-    private Raum treppeNachUnten;
+public class Raum {
+
+    public String beschreibung;
+    private HashMap<String, Raum> ausgaenge;
 
 
     /**
@@ -30,89 +27,31 @@ public class Raum
      * @param beschreibung enthält eine Beschreibung in der Form
      *        "in einer Küche" oder "auf einem Sportplatz".
      */
-    public Raum(String beschreibung)
-    {
+    public Raum(String beschreibung) {
         this.beschreibung = beschreibung;
+        ausgaenge = new HashMap<>();
     }
 
 
+    public void setAusgang(String richtung, Raum nachbar){
+        ausgaenge.put(richtung, nachbar);
+    }
 
-    /**
-     * Definiere die Ausgänge dieses Raums. Jede Richtung
-     * führt entweder in einen anderen Raum oder ist 'null'
-     * (kein Ausgang).
-     * @param norden Der Nordeingang.
-     * @param osten Der Osteingang.
-     * @param sueden Der Südeingang.
-     * @param westen Der Westeingang.
-     *
-     */
 
-    public void setzeAusgaenge(Raum norden, Raum osten,
-                               Raum sueden, Raum westen,
-                               Raum oben, Raum unten)
+    public Raum getAusgang(String richtung)
     {
-        if(norden != null)
-            nordausgang = norden;
-        if(osten != null)
-            ostausgang = osten;
-        if(sueden != null)
-            suedausgang = sueden;
-        if(westen != null)
-            westausgang = westen;
-        if(oben != null)
-            treppeNachOben = oben;
-        if(unten != null)
-            treppeNachUnten = unten;
+        return ausgaenge.get(richtung);
     }
 
-    public Raum getAusgang(String richtung) {
 
-        if(richtung.equals("north")) {
-            return nordausgang;
-        }
-        if(richtung.equals("east")) {
-            return ostausgang;
-        }
-        if(richtung.equals("south")) {
-            return suedausgang;
-        }
-        if(richtung.equals("west")) {
-            return westausgang;
-        }
-        if(richtung.equals("up")) {
-            return treppeNachOben;
-        }
-        if(richtung.equals("down")) {
-            return  treppeNachUnten;
-        } else {
-            return null;
+    public void ausgaengeToString() {
+
+        for (String s : ausgaenge.keySet()) {
+            System.out.print(s + " ");
         }
     }
 
 
-    public String ausgaengeToString(){
-
-        String alleAusgange = "";
-        if(this.nordausgang != null)
-           alleAusgange += "north";
-        if(this.ostausgang != null)
-            alleAusgange += "east";
-        if(this.suedausgang != null)
-            alleAusgange += "south";
-        if(this.westausgang != null)
-            alleAusgange += "west";
-        if(this.treppeNachOben != null)
-           alleAusgange += "up";
-        if(this.treppeNachUnten != null)
-           alleAusgange += "down";
-        return alleAusgange;
-    }
-
-
-    /**
-     * @return Die Beschreibung dieses Raums.
-     */
     public String gibBeschreibung()
     {
         return beschreibung;

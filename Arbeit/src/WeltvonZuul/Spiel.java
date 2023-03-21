@@ -54,15 +54,25 @@ public class Spiel
 
 
         // die Ausgänge initialisieren
-        lichtung.setzeAusgaenge(null, null, null, waldstueck,null, piratenhoehle);
-        waldstueck.setzeAusgaenge(null, lichtung, dorfplatz, null, null, null);
-        taverne.setzeAusgaenge(dorfplatz, null, null, null, gaestezimmer, keller);
-        hexenhaus.setzeAusgaenge(null, dorfplatz, null, null, null, null);
-        dorfplatz.setzeAusgaenge(waldstueck, null, taverne, hexenhaus, null, null);
-        gaestezimmer.setzeAusgaenge(null, null, null ,null, null, taverne);
-        keller.setzeAusgaenge(geheimgang, null, null, null, taverne, null);
-        geheimgang.setzeAusgaenge(null, piratenhoehle, keller, null, null, null);
-        piratenhoehle.setzeAusgaenge(null, geheimgang, null, null, lichtung, null);
+        lichtung.setAusgang("west", waldstueck);
+        lichtung.setAusgang("down", piratenhoehle);
+        waldstueck.setAusgang("east", lichtung);
+        waldstueck.setAusgang("south", dorfplatz);
+        taverne.setAusgang("north", dorfplatz);
+        taverne.setAusgang("up", gaestezimmer);
+        taverne.setAusgang("down", keller);
+        hexenhaus.setAusgang("east", dorfplatz);
+        dorfplatz.setAusgang("north" , waldstueck);
+        dorfplatz.setAusgang("south", taverne);
+        dorfplatz.setAusgang("west", hexenhaus);
+        gaestezimmer.setAusgang("down", taverne);
+        keller.setAusgang("up", taverne);
+        keller.setAusgang("north", geheimgang);
+        geheimgang.setAusgang("south", keller);
+        geheimgang.setAusgang("east", piratenhoehle);
+        piratenhoehle.setAusgang("up", lichtung);
+        piratenhoehle.setAusgang("west", geheimgang);
+        gaestezimmer.setAusgang("window", dorfplatz);
         aktuellerRaum = lichtung;  // das Spiel startet auf der Lichtung
     }
 
@@ -184,9 +194,10 @@ public class Spiel
     }
 
     private void raumInfoAusgeben(){
-
-        System.out.println(aktuellerRaum.ausgaengeToString());
+        System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
         System.out.print("Ausgänge: ");
+        System.out.println();
 
+        this.aktuellerRaum.ausgaengeToString();
     }
 }
