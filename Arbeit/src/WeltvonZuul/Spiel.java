@@ -127,8 +127,11 @@ public class Spiel
             hilfstextAusgeben();
         else if (befehlswort.equals("go"))
             wechsleRaum(befehl);
+        else if (befehlswort.equals("look"))
+            raumInfoAusgeben();
         else if (befehlswort.equals("quit")) {
             moechteBeenden = beenden(befehl);
+
         }
         return moechteBeenden;
     }
@@ -146,7 +149,7 @@ public class Spiel
         System.out.println("Sie irren auf dem Unigelände herum.");
         System.out.println();
         System.out.println("Ihnen stehen folgende Befehle zur Verfügung:");
-        System.out.println("   go quit help");
+        System.out.println("   go quit help look");
     }
 
     /**
@@ -177,6 +180,8 @@ public class Spiel
         }
     }
 
+
+
     /**
      * "quit" wurde eingegeben. Überprüfe den Rest des Befehls,
      * ob das Spiel wirklich beendet werden soll.
@@ -195,9 +200,6 @@ public class Spiel
 
     private void raumInfoAusgeben(){
         System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-        System.out.print("Ausgänge: ");
-        System.out.println();
-
         this.aktuellerRaum.ausgaengeToString();
     }
 }

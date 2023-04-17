@@ -12,7 +12,7 @@ public class Befehlswoerter
 {
     // ein konstantes Array mit den gültigen Befehlswörtern
     private static final String[] gueltigeBefehle = {
-            "go", "quit", "help"
+            "go", "quit", "help", "look"
     };
 
     /**
@@ -22,7 +22,9 @@ public class Befehlswoerter
     {
         // nichts zu tun momentan...
     }
-
+    public String getAlleGueltigenBefehle(){
+        return;
+    }
     /**
      * Prüfe, ob eine gegebene Zeichenkette ein gültiger
      * Befehl ist.

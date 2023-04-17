@@ -43,18 +43,18 @@ public class Raum {
         return ausgaenge.get(richtung);
     }
 
-
-    public void ausgaengeToString() {
-
+    public String ausgaengeToString() {
+        String allausgaenge = "";
         for (String s : ausgaenge.keySet()) {
-            System.out.print(s + " ");
+            allausgaenge += s + " ";
         }
+        return allausgaenge;
+    }
+
+    public String gibBeschreibung() {
+        return  "Sie sind " + this.beschreibung +"\nAusgänge: " + ausgaengeToString();
     }
 
 
-    public String gibBeschreibung()
-    {
-        return beschreibung;
-    }
 
 }
