@@ -64,4 +64,8 @@ public class Parser
         }
     }
 
+    public String getAlleBefehle() {
+        return befehle.getAlleGueltigenBefehle();
+    }
+
 }

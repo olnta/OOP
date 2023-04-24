@@ -40,6 +40,15 @@ public class Spiel
     {
         Raum lichtung, waldstueck, taverne, hexenhaus, dorfplatz, gaestezimmer,
                 keller, geheimgang, piratenhoehle;
+        Gegenstand korb, bierkrug, teller, schatztruhe, schwert, pilz;
+
+        //die Gegenstände erzeugen
+        korb = new Gegenstand("Korb", "ein Weidenkorb gefüllt mit Brot", 4);
+        bierkrug = new Gegenstand("Bierkrug", "ein leckeres dunkles Pils in einem edlen Krug", 2.2);
+        teller = new Gegenstand("Teller", "ein Teller mit deftigem Wildschweinfleisch mit Soße", 5.5);
+        schatztruhe = new Gegenstand("Schatztruhe", "eine mit Gold gefüllte Holzkiste", 40);
+        schwert = new Gegenstand("Schwert", "das Schwert des alten Piratenkapitäns", 10);
+        pilz = new Gegenstand("Pilz", "seltsam aussehender Pilz", 1.2);
 
         // die Räume erzeugen
         lichtung = new Raum("auf einer Lichtung, umgeben von dunklen Tannen");
@@ -52,6 +61,13 @@ public class Spiel
         geheimgang = new Raum("in Geheimgang");
         piratenhoehle = new Raum("in Piratenhöhle");
 
+        //die Gegenstände initialisieren
+        lichtung.gegenstandAblegen(korb);
+        taverne.gegenstandAblegen(bierkrug);
+        taverne.gegenstandAblegen(teller);
+        piratenhoehle.gegenstandAblegen(schatztruhe);
+        piratenhoehle.gegenstandAblegen(schwert);
+        waldstueck.gegenstandAblegen(pilz);
 
         // die Ausgänge initialisieren
         lichtung.setAusgang("west", waldstueck);
@@ -149,7 +165,7 @@ public class Spiel
         System.out.println("Sie irren auf dem Unigelände herum.");
         System.out.println();
         System.out.println("Ihnen stehen folgende Befehle zur Verfügung:");
-        System.out.println("   go quit help look");
+        System.out.println("|" + parser.getAlleBefehle());
     }
 
     /**
@@ -179,8 +195,6 @@ public class Spiel
             raumInfoAusgeben();
         }
     }
-
-
 
     /**
      * "quit" wurde eingegeben. Überprüfe den Rest des Befehls,

@@ -1,5 +1,6 @@
 package WeltvonZuul;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -19,7 +20,7 @@ public class Raum {
 
     public String beschreibung;
     private HashMap<String, Raum> ausgaenge;
-
+    private ArrayList<Gegenstand> gegenstaende;
 
     /**
      * Erzeuge einen Raum mit einer Beschreibung. Ein Raum
@@ -30,13 +31,12 @@ public class Raum {
     public Raum(String beschreibung) {
         this.beschreibung = beschreibung;
         ausgaenge = new HashMap<>();
+        gegenstaende = new ArrayList<Gegenstand>();
     }
-
 
     public void setAusgang(String richtung, Raum nachbar){
         ausgaenge.put(richtung, nachbar);
     }
-
 
     public Raum getAusgang(String richtung)
     {
@@ -52,9 +52,33 @@ public class Raum {
     }
 
     public String gibBeschreibung() {
-        return  "Sie sind " + this.beschreibung +"\nAusgänge: " + ausgaengeToString();
+        String text = "";
+        text += "Sie sind " + this.beschreibung + "\nAusgänge: | " + ausgaengeToString();
+        text += "\nGegenstände an diesem Ort: ";
+        if(this.gegenstaende.isEmpty()) {
+            text += "\nkeine Gegenstände vorhanden";
+        } else {
+            for(Gegenstand g: gegenstaende) {
+                text += "\n" + g.toString();
+            }
+        }
+        return text;
     }
 
+    public void gegenstandAblegen(Gegenstand g)
+    {
+        gegenstaende.add(g);
+    }
+
+    public ArrayList<Gegenstand> getAlleGegenstaende()
+    {
+        return gegenstaende;
+    }
+
+    public void entferneGegenstand(Gegenstand g)
+    {
+        gegenstaende.remove(g);
+    }
 
 
 }
