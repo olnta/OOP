@@ -22,13 +22,15 @@ package WeltvonZuul;
 public class Spiel
 {
     private Parser parser;
-    private Raum aktuellerRaum;
+    private Spieler spieler;
 
     /**
      * Erzeuge ein Spiel und initialisiere die interne Raumkarte.
      */
-    public Spiel()
-    {
+    public Spiel(Spieler spieler){
+
+
+        this.spieler = spieler;
         raeumeAnlegen();
         parser = new Parser();
     }
@@ -89,8 +91,11 @@ public class Spiel
         piratenhoehle.setAusgang("up", lichtung);
         piratenhoehle.setAusgang("west", geheimgang);
         gaestezimmer.setAusgang("window", dorfplatz);
-        aktuellerRaum = lichtung;  // das Spiel startet auf der Lichtung
+        spieler.gehezu(lichtung); // das Spiel startet auf der Lichtung
+
     }
+
+
 
     /**
      * Die Hauptmethode zum Spielen. Läuft bis zum Ende des Spiels
@@ -185,13 +190,13 @@ public class Spiel
 
         // Wir versuchen den Raum zu verlassen.
         Raum naechsterRaum = null;
-        naechsterRaum = aktuellerRaum.getAusgang(richtung);
+        naechsterRaum = this.spieler.getAktuellerRaum().getAusgang(richtung);
 
         if (naechsterRaum == null) {
             System.out.println("Dort ist keine Tür!");
         }
         else {
-            aktuellerRaum = naechsterRaum;
+            spieler.gehezu(naechsterRaum);
             raumInfoAusgeben();
         }
     }
@@ -213,7 +218,7 @@ public class Spiel
     }
 
     private void raumInfoAusgeben(){
-        System.out.println("Sie sind " + aktuellerRaum.gibBeschreibung());
-        this.aktuellerRaum.ausgaengeToString();
+        System.out.println("Sie sind " + spieler.getAktuellerRaum().gibBeschreibung());
+        this.spieler.getAktuellerRaum().ausgaengeToString();
     }
 }
