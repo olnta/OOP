@@ -7,6 +7,7 @@ public class Ware {
 	private String bezeichnung;
 	private String beschreibung;
 	private double preis;
+	private int warenNr;
 	private ArrayList<String> besonderheitenListe;
 	private ArrayList<String> maengelListe;
 
@@ -15,9 +16,10 @@ public class Ware {
 	 * @param bezeichnung	Die Bezeichnung der Ware.
 	 * @param preis			Der Preis der Ware.
 	 */
-	public Ware(String bezeichnung, double preis) {
+	public Ware(String bezeichnung, double preis, int warenNr) {
 		this.bezeichnung = bezeichnung;
 		this.preis = preis;
+		this.warenNr = warenNr;
 		besonderheitenListe = new ArrayList<String>();
 		maengelListe = new ArrayList<String>();
 	}

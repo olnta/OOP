@@ -1,5 +1,7 @@
 import Dao.VertragspartnerDao;
+import Dao.WareDao;
 import businessObjects.Vertragspartner;
+import businessObjects.Ware;
 
 public class Program {
 
@@ -12,6 +14,8 @@ public class Program {
 		Vertragspartner vertragspartner = vertragspartnerDao.read("0123456789");
 		System.out.println(vertragspartner);
 
+		WareDao wareDao = new WareDao();
+		Ware ware = wareDao.read(1);
+		System.out.println(ware);
 	}
-
 }
