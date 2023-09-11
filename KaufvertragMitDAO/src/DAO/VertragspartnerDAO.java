@@ -9,58 +9,45 @@ import java.util.ArrayList;
 public class VertragspartnerDao {
 
     //Deklaration einer DB klasse, die SQLite-Treiberbibliothek zugreift.
-    private static final String CLASSNAME="org.sqlite.JDBC";
+    private static final String CLASSNAME = "org.sqlite.JDBC";
 
     // Deklaration des zugriffs per JDBC-Treiber auf SQLite und dann auf die im Pfad genannten DB.
-    private static final String CONNECTIONSTRING = "jdbc:sqlite:KaufvertragMitDAO/DB_Kaufvertrag.db" ;
+    private static final String CONNECTIONSTRING = "jdbc:sqlite:KaufvertragMitDAO/DB_Kaufvertrag.db";
+    private Connection connection;
 
     public VertragspartnerDao() throws ClassNotFoundException {
         //DB-Klasse angelegt
         Class.forName(CLASSNAME);
     }
 
-    public Vertragspartner read(String nr){
+    public Vertragspartner read(String nr) {
         PreparedStatement preparedStatement = null;
-        Connection connection = null;
         Vertragspartner vertragspartner = null;
+        connection = null;
 
         try {
             //DB-Verbindung aufbauen
             connection = DriverManager.getConnection(CONNECTIONSTRING);
             //SQL Query vorbereiten, aber noch nicht ausführen.
-            String sql= "SELECT * FROM Vertragspartner WHERE AusweisNr = ? ";
+            String sql = "SELECT * FROM Vertragspartner WHERE AusweisNr = ? ";
             //Sogennantes Prepared Statement erstellen, das nicht weiter veränderbar ist.
             preparedStatement = connection.prepareStatement(sql);
             //Den Parameter dieser Methode (nr) ab deb Parameter (?) des Prepared Statement übergeben.
-            preparedStatement.setString(1,nr);
+            preparedStatement.setString(1, nr);
             //SQL Query ausführen und in einem Result Set speichern.
             ResultSet resultSet = preparedStatement.executeQuery();
             //Auf den nächsten Eintrag (hier: den ersten) des Result Set gehen.
             resultSet.next();
-
-            //Werte aus dem Result Set an Variablen übergeben zum Zwischenspeichern.
-            String ausweisNr = resultSet.getString("AusweisNr");
-            String vorname = resultSet.getString("Vorname");
-            String nachname = resultSet.getString("Nachname");
-            String strasse = resultSet.getString("Strasse");
-            String hausNr = resultSet.getString("HausNr");
-            String plz = resultSet.getString("PLZ");
-            String ort = resultSet.getString("Ort");
-
-            //Vertragspartner-Objekt erstellen.
-            vertragspartner = new Vertragspartner(vorname, nachname);
-            vertragspartner.setAusweisNr(ausweisNr);
-            vertragspartner.setAdresse(new Adresse(strasse, hausNr, plz, ort));
+            vertragspartner = createObject(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 preparedStatement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 try {
                     connection.close();
                 } catch (SQLException e) {
@@ -84,14 +71,14 @@ public class VertragspartnerDao {
             vertragspartnerListe = new ArrayList<>();
             while (resultSet.next()) {
                 vertragspartner = createObject(resultSet);
-               vertragspartnerListe.add(vertragspartner);
+                vertragspartnerListe.add(vertragspartner);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             try {
                 preparedStatement.close();
-            } catch (SQLException e){
+            } catch (SQLException e) {
                 throw new RuntimeException();
             } finally {
                 try {
@@ -105,23 +92,44 @@ public class VertragspartnerDao {
     }
 
     private Vertragspartner createObject(ResultSet resultSet) throws SQLException {
+        Vertragspartner vertragspartner = null;
+        try {
 
-        String ausweisNr = resultSet.getString("AusweisNr");
-        String vorname = resultSet.getString("Vorname");
-        String nachname = resultSet.getString("Nachname");
-        String strasse = resultSet.getString("Strasse");
-        String hausNr = resultSet.getString("HausNr");
-        String plz = resultSet.getString("PLZ");
-        String ort = resultSet.getString("Ort");
-        // Vertragspartner Objekt erstellen
-
-        Vertragspartner vertragspartner;
-        vertragspartner = new Vertragspartner(vorname, nachname);
-        vertragspartner.setAusweisNr(ausweisNr);
-        vertragspartner.setAdresse(new Adresse(strasse, hausNr, plz, ort));
+            String ausweisNr = resultSet.getString("AusweisNr");
+            String vorname = resultSet.getString("Vorname");
+            String nachname = resultSet.getString("Nachname");
+            String strasse = resultSet.getString("Strasse");
+            String hausNr = resultSet.getString("HausNr");
+            String plz = resultSet.getString("PLZ");
+            String ort = resultSet.getString("Ort");
+            // Vertragspartner-Objekt und somit auch Afress-Objekt erzeugen und Attributewerte
+            vertragspartner = new Vertragspartner(vorname, nachname);
+            vertragspartner.setAusweisNr(ausweisNr);
+            vertragspartner.setAdresse(new Adresse(strasse, hausNr, plz, ort));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         return vertragspartner;
     }
 
-
+    public void delete(String nr) throws SQLException {
+        connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            String sql = "DELETE FROM Vertragspartner WHERE AusweisNr = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, nr);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
