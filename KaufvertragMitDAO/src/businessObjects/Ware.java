@@ -88,6 +88,10 @@ public class Ware {
 		return maengelListe;
 	}
 
+	public int getWarenNr() {return warenNr;}
+
+	public void setWarenNr(int warenNr) {this.warenNr = warenNr;}
+
 	/**
 	 * (non-Javadoc)
 	 * @see Object#toString()
