@@ -58,6 +58,7 @@ public class Program {
 		for (Ware w : wListe){
 			System.out.println(w);
 		}
+
 		//VertragspartnerDAO.update testen:
 		System.out.println("------------------------------------------------\nVertragspartnerDAO.update testen:");
 

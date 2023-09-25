@@ -3,34 +3,39 @@ package Dao;
 import businessObjects.Adresse;
 import businessObjects.Vertragspartner;
 import businessObjects.Ware;
+
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class WareDao {
+public class WareDAO {
+
+    // Deklaration einer DB-Klasse, die SQLite-Treiberbibliothek zugreift
     private static final String CLASSNAME = "org.sqlite.JDBC";
-    private static final String CONNECTIONSTRING = "jdbc:sqlite:KaufvertragMitDao/DB_kaufvertrag.db";
+    // Deklaration des Zugriffs per JDBC-Treiber auf SQLITE und dann auf die im
+    // Pfad genannte DB.
+    private static final String CONNECTIONSTRING = "jdbc:sqlite:KaufvertragMitDAO/DB_Kaufvertrag.db";
     private Connection connection;
-    private Ware waren;
+    private Ware ware;
 
-    public WareDao() throws ClassNotFoundException {
+    public WareDAO() throws ClassNotFoundException {
+        // DB-Klasse angelegt.
         Class.forName(CLASSNAME);
     }
 
-
-
-    public Ware read(String nr) {
+    public Ware read(int nr) {
         PreparedStatement preparedStatement = null;
         connection = null;
-        waren = null;
+        ware = null;
+
         try {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
-            String sql = "SELECT * From Waren WHERE WarenNr = ?";
+            String sql = "SELECT * FROM Waren WHERE warenNr = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, nr);
+            preparedStatement.setInt(1, nr);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            waren = createObject(resultSet);
+
+            ware = createObject(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,25 +52,102 @@ public class WareDao {
                 }
             }
         }
-        return waren;
+        return ware;
+
     }
 
-
-
     public ArrayList<Ware> read() {
+        connection = null;
         PreparedStatement preparedStatement = null;
-        waren = null;
-        ArrayList<Ware> warenListe = null;
+        ware = null;
+        ArrayList<Ware> wareListe = null;
         try {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
             String sql = "SELECT * FROM Waren";
             preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
-            warenListe = new ArrayList<>();
+            wareListe = new ArrayList<>();
             while (resultSet.next()) {
-                waren = createObject(resultSet);
-                warenListe.add(waren);
+                ware = createObject(resultSet);
+                wareListe.add(ware);
+
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return wareListe;
+    }
+
+    private Ware createObject(ResultSet resultSet) throws SQLException {
+        int warenNr = resultSet.getInt("WarenNr");
+        String bezeichnung = resultSet.getString("Bezeichnung");
+        String beschreibung = resultSet.getString("Beschreibung");
+        double preis = resultSet.getDouble("Preis");
+        String besonderheiten = resultSet.getString("Besonderheiten");
+        String maengel = resultSet.getString("Maengel");
+
+        ware = new Ware(bezeichnung, preis, warenNr);
+        ware.setPreis(preis);
+        ware.setBeschreibung(beschreibung);
+        ware.setBezeichnung(bezeichnung);
+
+        if (besonderheiten != null) {
+            // den erhaltenen String (hier : "Tasche; Gaming-Maus") aufsplitten bei den Semikola und die
+            // einzelnen Teile in das neue Array besonderheitenArray ablegen
+            String[] besonderheitenArray = besonderheiten.split(";");
+            // Nun die Elemente des Array (hier: "Tasche" und " Gaming-Maus") einzeln der
+            // besonderheitenListe hinzufügen und dabei eventuelle Leerzeichen entfernen mit .trim()
+            for (String besonderheit : besonderheitenArray) {
+                ware.getBesonderheitenListe().add(besonderheit.trim());
+            }
+
+
+
+        }
+        if (maengel != null) {
+            String[] mangelArray = maengel.split(";");
+            for (String mangel : mangelArray) {
+                ware.getMaengelListe().add(mangel.trim());
+            }
+        }
+        return ware;
+    }
+
+
+
+    public Ware update(Ware ware) {
+        String besonderheitenString = "";
+        String maengelString = "";
+        connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            String sql = "UPDATE Waren SET Bezeichnung = ?, " +
+                    "Beschreibung = ?, Preis = ?, Besonderheiten = ?, Maengel = ?" +
+                    "WHERE warenNr = ?";
+            preparedStatement = connection.prepareStatement(sql);
+
+
+            preparedStatement.setString(1, ware.getBezeichnung());
+            preparedStatement.setString(2, ware.getBeschreibung());
+            preparedStatement.setDouble(3, ware.getPreis());
+            preparedStatement.setString(4, arrayToString(ware.getBesonderheitenListe()));
+            preparedStatement.setString(5, arrayToString(ware.getMaengelListe()));
+            preparedStatement.setInt(6, ware.getWarenNr());
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -82,48 +164,20 @@ public class WareDao {
                 }
             }
         }
-        return warenListe;
+        return ware;
     }
 
 
-
-    private Ware createObject(ResultSet resultSet) throws SQLException {
-        int warenNr = resultSet.getInt("WarenNr");
-        String bezeichnung = resultSet.getString("Bezeichnung");
-        String beschreibung = resultSet.getString("Beschreibung");
-        double preis = resultSet.getDouble("Preis");
-        String besonderheiten = resultSet.getString("Besonderheiten");
-        String maengel = resultSet.getString("Maengel");
-
-        waren = new Ware(bezeichnung, preis, warenNr);
-        waren.setBezeichnung(bezeichnung);
-        waren.setBeschreibung(beschreibung);
-
-        if (besonderheiten != null) {
-            String[] besonderheitenArray = besonderheiten.split(";");
-            for (String bhA: besonderheitenArray) {
-                waren.getBesonderheitenListe().add(bhA.trim());
-            }
-        }
-
-        if (maengel != null) {
-            String[] maengelArray = maengel.split(";");
-            for (String mA: maengelArray) {
-                waren.getMaengelListe().add(mA.trim());
-            }
-        }
-        return waren;
-    }
-
-    public void delete(String nr) throws SQLException {
+    public void deleteWare(String nr) {
         connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = DriverManager.getConnection(CONNECTIONSTRING);
-            String sql = "DELETE FROM Waren WHERE WarenNr = ?";
+            String sql = "DELETE FROM WAREN WHERE WarenNr=? ";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, nr);
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -131,7 +185,67 @@ public class WareDao {
                 preparedStatement.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
+
+
+
+    public Ware create(Ware ware) {
+        connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            String sql = "INSERT INTO Waren (Bezeichnung, Beschreibung, Preis, Besonderheiten, Maengel) VALUES (?, ?, ?, ?, ?)";
+
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, ware.getBezeichnung());
+            preparedStatement.setString(2, ware.getBeschreibung());
+            preparedStatement.setDouble(3, ware.getPreis());
+            preparedStatement.setString(4, arrayToString(ware.getBesonderheitenListe()));
+            preparedStatement.setString(5, arrayToString(ware.getMaengelListe()));
+            preparedStatement.executeUpdate();
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT last_insert_rowid()");
+            ware.setWarenNr(resultSet.getInt("last_insert_rowid()"));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return ware;
+    }
+
+    public String arrayToString (ArrayList<String> s){
+        String stringAsArray = "";
+        for (String wString : s) {
+            if (stringAsArray.isEmpty()) {
+                stringAsArray += wString;
+            } else {
+                stringAsArray += ";" + wString;
+            }
+        }
+
+        return stringAsArray;
+    }
 }
+

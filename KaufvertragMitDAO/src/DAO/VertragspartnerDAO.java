@@ -113,6 +113,45 @@ public class VertragspartnerDao {
         return vertragspartner;
     }
 
+    public Vertragspartner update(Vertragspartner vertragspartner) throws SQLException {
+        connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            String sql = "UPDATE vertragspartner SET  Vorname = ?," +
+                    "Nachname = ?, Strasse = ?, HausNr = ?, Plz = ?, Ort = ?" +
+                    "WHERE AusweisNr = ?";
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, vertragspartner.getVorname());
+            preparedStatement.setString(2, vertragspartner.getNachname());
+            preparedStatement.setString(3, vertragspartner.getAdresse().getStrasse());
+            preparedStatement.setString(4, vertragspartner.getAdresse().getHausNr());
+            preparedStatement.setString(5, vertragspartner.getAdresse().getPlz());
+            preparedStatement.setString(6, vertragspartner.getAdresse().getOrt());
+            preparedStatement.setString(7, vertragspartner.getAusweisNr());
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return vertragspartner;
+    }
+
     public void delete(String nr) throws SQLException {
         connection = null;
         PreparedStatement preparedStatement = null;
@@ -131,5 +170,42 @@ public class VertragspartnerDao {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public Vertragspartner create(Vertragspartner vertragspartner) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection(CONNECTIONSTRING);
+            String sql = "INSERT INTO Vertragspartner (AusweisNr, Vorname, Nachname, Strasse, HausNr, PLZ, ORT) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, vertragspartner.getAusweisNr());
+            preparedStatement.setString(2, vertragspartner.getVorname());
+            preparedStatement.setString(3, vertragspartner.getNachname());
+            preparedStatement.setString(4, vertragspartner.getAdresse().getStrasse());
+            preparedStatement.setString(5, vertragspartner.getAdresse().getHausNr());
+            preparedStatement.setString(6, vertragspartner.getAdresse().getPlz());
+            preparedStatement.setString(7, vertragspartner.getAdresse().getOrt());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    if (connection != null) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        return vertragspartner;
     }
 }
