@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Taxi">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="523" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="bbea7" layout-manager="GridLayoutManager" row-count="5" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none" title="Eingaben"/>
+        <children>
+          <component id="e58eb" class="javax.swing.JLabel" binding="Auswahl">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Auswahl des Fahrzeugtyps"/>
+            </properties>
+          </component>
+          <component id="566a4" class="javax.swing.JLabel" binding="Entfernung">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Entfernung in km"/>
+            </properties>
+          </component>
+          <component id="5745c" class="javax.swing.JCheckBox" binding="checkBoxNachtfahrt">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Nachtfahrt (Zuschlag 10%)"/>
+            </properties>
+          </component>
+          <component id="77d38" class="javax.swing.JCheckBox" binding="checkBoxKindersitz">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Kindersitz (Zuschlag 1€)"/>
+            </properties>
+          </component>
+          <component id="b4297" class="javax.swing.JCheckBox" binding="checkBoxBar">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Bar (Zuschlag 15€)"/>
+            </properties>
+          </component>
+          <component id="1720c" class="javax.swing.JLabel" binding="Fahrgäste">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <horizontalTextPosition value="10"/>
+              <text value="Fahrgäste"/>
+            </properties>
+          </component>
+          <hspacer id="8c67a">
+            <constraints>
+              <grid row="0" column="1" row-span="5" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="8166" class="javax.swing.JTextField" binding="textFieldEntfernung">
+            <constraints>
+              <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="4"/>
+            </properties>
+          </component>
+          <component id="1413a" class="javax.swing.JTextField" binding="textFieldFahrgastEingabe">
+            <constraints>
+              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="4"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="ee6cc" class="javax.swing.JComboBox" binding="comboBoxAuswahl">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+            </properties>
+          </component>
+          <hspacer id="cdedc">
+            <constraints>
+              <grid row="1" column="3" row-span="4" col-span="2" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <grid id="f3127" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="1" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none" title="Rechnungsübersicht"/>
+        <children>
+          <component id="e7b1c" class="javax.swing.JLabel" binding="Netto">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Nettobetrag"/>
+            </properties>
+          </component>
+          <hspacer id="32579">
+            <constraints>
+              <grid row="0" column="1" row-span="3" col-span="2" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="8fc37" class="javax.swing.JLabel" binding="MWS">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Mehrwertsteuer"/>
+            </properties>
+          </component>
+          <component id="b0ad4" class="javax.swing.JTextField" binding="textFieldNettobetrag">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <horizontalAlignment value="4"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="dff00" class="javax.swing.JTextField" binding="textFieldMehrwertsteuer">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <horizontalAlignment value="4"/>
+            </properties>
+          </component>
+          <component id="6c125" class="javax.swing.JLabel" binding="Brutto">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Bruttobetrag"/>
+            </properties>
+          </component>
+          <component id="8a62b" class="javax.swing.JTextField" binding="textFieldBruttobetrag">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="8f2f9" class="javax.swing.JButton" binding="buttonNeu">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Neu"/>
+        </properties>
+      </component>
+      <component id="e7976" class="javax.swing.JButton" binding="ButtonEnde">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ende"/>
+        </properties>
+      </component>
+      <component id="791b8" class="javax.swing.JButton" binding="ButtonDrucken">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Drucken"/>
+        </properties>
+      </component>
+      <component id="bef02" class="javax.swing.JButton" binding="buttonBerechnen">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Berechnen"/>
+        </properties>
+      </component>
+      <vspacer id="97263">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="43894">
+        <constraints>
+          <grid row="1" column="3" row-span="5" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="a6443">
+        <constraints>
+          <grid row="1" column="0" row-span="5" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="be51b">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>
